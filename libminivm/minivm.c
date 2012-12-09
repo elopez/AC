@@ -3,7 +3,7 @@
 #include "regs.h"
 #include "mem.h"
 
-int run(Instruction *code)
+int run(Instruction * code)
 {
     Instruction *line;
 
@@ -15,6 +15,6 @@ int run(Instruction *code)
         line = code + REG(PC);
         REG(PC)++;
 
-        ops[INDEX(line)](line->param1.value, line->param2.value);
+        ops[INDEX(line)] (line->param1.value, line->param2.value);
     }
 }

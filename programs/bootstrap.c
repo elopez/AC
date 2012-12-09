@@ -5,5 +5,5 @@ extern Instruction code[];
 
 int main(void)
 {
-	return run(code);
+    return run(code);
 }
