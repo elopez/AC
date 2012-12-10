@@ -47,7 +47,7 @@ enum {
 typedef struct {
     uint8_t op;
     struct param {
-        uint32_t value;
+        int32_t value;
         uint8_t type:1;
     } param1, param2;
 } INSTRUCTION;

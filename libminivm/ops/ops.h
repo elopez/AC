@@ -3,23 +3,23 @@
 #ifndef __OPS_H__
 #define __OPS_H__
 
-typedef void (*op) (uint32_t param1, uint32_t param2);
+typedef void (*op) (int32_t param1, int32_t param2);
 
 /* Operations with no arguments */
 #define DECLARE_OP_0(name) \
-    void inline vm_ ## name(uint32_t param1, uint32_t param2)
+    void inline vm_ ## name(int32_t param1, int32_t param2)
 
 /* Operations with one argument */
 #define DECLARE_OP_1(name) \
-    void inline vm_ ## name ## _IMM(uint32_t param1, uint32_t param2); \
-    void inline vm_ ## name ## _REG(uint32_t param1, uint32_t param2)
+    void inline vm_ ## name ## _IMM(int32_t param1, int32_t param2); \
+    void inline vm_ ## name ## _REG(int32_t param1, int32_t param2)
 
 /* Operations with two arguments */
 #define DECLARE_OP_2(name) \
-    void inline vm_ ## name ## _IMM_IMM(uint32_t param1, uint32_t param2); \
-    void inline vm_ ## name ## _IMM_REG(uint32_t param1, uint32_t param2); \
-    void inline vm_ ## name ## _REG_IMM(uint32_t param1, uint32_t param2); \
-    void inline vm_ ## name ## _REG_REG(uint32_t param1, uint32_t param2)
+    void inline vm_ ## name ## _IMM_IMM(int32_t param1, int32_t param2); \
+    void inline vm_ ## name ## _IMM_REG(int32_t param1, int32_t param2); \
+    void inline vm_ ## name ## _REG_IMM(int32_t param1, int32_t param2); \
+    void inline vm_ ## name ## _REG_REG(int32_t param1, int32_t param2)
 
 /* table entry generators for ops */
 #define OP_0(name) vm_ ## name, vm_ ## name, vm_ ## name, vm_ ## name
