@@ -7,7 +7,7 @@ OUT=../out
 all: outdir build
 build: $(OUT)/test0.minivm $(OUT)/test1.minivm $(OUT)/test2.minivm \
        $(OUT)/test3.minivm $(OUT)/test4.minivm $(OUT)/test5.minivm \
-       $(OUT)/test6.minivm
+       $(OUT)/test6.minivm $(OUT)/test7.minivm
 
 outdir:
 	@mkdir -p $(OUT)
