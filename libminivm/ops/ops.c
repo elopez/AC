@@ -22,4 +22,8 @@ op ops[] = {
     OP_1(JMPE),
     OP_1(JMPL),
     OP_0(HLT),
+    OP_2(AND),
+    OP_2(OR),
+    OP_2(XOR),
+    OP_1(NOT),
 };

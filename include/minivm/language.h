@@ -22,6 +22,12 @@ enum {
     JMPE,
     JMPL,
     HLT,
+
+    /* Instruction set extension */
+    AND,
+    OR,
+    XOR,
+    NOT,
 };
 
 /* Parameter types */
