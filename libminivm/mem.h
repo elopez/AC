@@ -15,6 +15,6 @@ char mem[MEM_SIZE];
 #define MEM(i)      mem[(i)]
 
 /* User-friendly macro to access 32 bits */
-#define MEM32(i)    *(uint32_t*)(mem + (i))
+#define MEM32(i)    *(int32_t*)(mem + (i))
 
 #endif
