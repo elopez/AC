@@ -42,6 +42,12 @@ enum {
     FLAGS,
 };
 
+/* FLAGS bit masks */
+enum {
+    EQUAL = 1,
+    LT = 2,
+};
+
 /* Single instruction definition */
 #define INSTRUCTION Instruction
 typedef struct {

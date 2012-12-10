@@ -17,9 +17,9 @@ op ops[] = {
     OP_2(SUB),
     OP_2(MUL),
     OP_2(DIV),
-    NULLS,                      //CMP,
+    OP_2(CMP),
     OP_1(JMP),
-    NULLS,                      //JMPE,
-    NULLS,                      //JMPL,
+    OP_1(JMPE),
+    OP_1(JMPL),
     OP_0(HLT),
 };
