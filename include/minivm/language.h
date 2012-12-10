@@ -28,6 +28,8 @@ enum {
     OR,
     XOR,
     NOT,
+    CALL,
+    RET,
 };
 
 /* Parameter types */
