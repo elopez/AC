@@ -5,7 +5,8 @@ LDFLAGS=-lminivm -Wl,-rpath,$(shell readlink -f $(OUT)) -L$(OUT)
 OUT=../out
 
 all: outdir build
-build: $(OUT)/test0.minivm $(OUT)/test1.minivm $(OUT)/test2.minivm
+build: $(OUT)/test0.minivm $(OUT)/test1.minivm $(OUT)/test2.minivm \
+       $(OUT)/test3.minivm
 
 outdir:
 	@mkdir -p $(OUT)
