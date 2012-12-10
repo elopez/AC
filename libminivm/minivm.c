@@ -10,6 +10,7 @@ int run(Instruction * code)
     /* Initialize registers */
     REG(SP) = MEM_SIZE - 1;
     REG(PC) = 0;
+    REG(ZERO) = 0;
 
     while (1) {
         line = code + REG(PC);
