@@ -12,7 +12,7 @@ op ops[] = {
     OP_1(PUSH),
     OP_1(POP),
     OP_1(PRINT),
-    NULLS,                      //READ,
+    OP_1(READ),
     NULLS,                      //ADD,
     NULLS,                      //SUB,
     NULLS,                      //MUL,
