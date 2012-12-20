@@ -1,11 +1,11 @@
 CC=gcc
 INCLUDES=-I../include/
-CFLAGS= -fPIC -O0 -g -Winline $(INCLUDES)
-LDFLAGS= -shared
+CFLAGS= -O0 -g $(INCLUDES)
+LDFLAGS= -ldl
 OUT=../out
 
 all: outdir build
-build: $(OUT)/libminivm.so
+build: $(OUT)/minivm
 
 outdir:
 	@mkdir -p $(OUT)
@@ -13,5 +13,5 @@ outdir:
 clean:
 	@rm -r $(OUT)
 
-$(OUT)/libminivm.so: minivm.c ops/*.c
+$(OUT)/minivm: main.c minivm.c ops/*.c
 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $^

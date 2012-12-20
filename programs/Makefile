@@ -1,7 +1,7 @@
 CC=gcc
 INCLUDES=-I../include/
 CFLAGS=$(INCLUDES)
-LDFLAGS=-lminivm -Wl,-rpath,$(shell readlink -f $(OUT)) -L$(OUT)
+LDFLAGS=-shared -fPIC
 OUT=../out
 
 all: outdir build
@@ -17,8 +17,5 @@ outdir:
 clean:
 	@rm -r $(OUT)
 
-$(OUT)/%.minivm: $(OUT)/libminivm.so bootstrap.c %.minivm.c
-	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(filter-out $<, $^)
-
-$(OUT)/libminivm.so:
-	make -C ../libminivm/
+$(OUT)/%.minivm: %.minivm.c
+	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $^
