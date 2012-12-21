@@ -1,0 +1,117 @@
+#+LaTeX_CLASS: org-article
+#+OPTIONS: toc:nil
+#+TITLE: Trabajo final de Arquitectura del Computador
+#+AUTHOR: Emilio López \\Legajo L-2712/1
+#+DATE: 22 de Diciembre de 2012
+
+* Introducción
+  En este trabajo se implementó una máquina abstracta, capaz de ejecutar
+  instrucciones sencillas. La implementación fue realizada en C, y permite
+  cargar arreglos de instrucciones desde una biblioteca compartida e
+  interpretarlos.
+
+* Características
+
+  La máquina posee un espacio de memoria de 640 kilobytes y 8 registros
+  de 4 bytes cada uno, de los cuales 4 son de propósito general, uno es
+  siempre cero, uno contiene las banderas de operaciones, otro es el
+  contador de instrucciones y el último es el puntero de la pila.
+
+** Instrucciones
+   La memoria puede ser accedida mediante las instrucciones POP, PUSH, LW,
+   SW y MOV. MOV a su vez permite copiar valores entre registros sin pasar
+   por memoria.
+
+   Las instrucciones de alto nivel READ y PRINT permiten a los programas
+   leer e imprimir enteros, siendo esta la única forma posible de
+   interacción con el usuario.
+
+   Las instrucciones ADD, SUB, MUL y DIV permiten realizar sumas, restas,
+   multiplicaciones y divisiones entre valores de registros, o un valor
+   de registro y un valor inmediato.
+
+   La instrucción CMP permite a los programas comparar valores inmediatos
+   o en registros, acción que luego permite alterar el flujo del programa
+   a través de las instrucciones de salto JMPL y JMPE.
+
+   Las instrucciones AND, OR, XOR y NOT permiten realizar las operaciones de
+   bits de igual nombre.
+
+   CALL y RET permiten implementar funciones en la máquina, guardando el valor
+   de retorno antes de saltar y posteriormente permitiendo volver al lugar
+   almacenado.
+
+   La instrucción HLT detiene la ejecución, y cierra la máquina virtual.
+
+* Programas
+
+  El siguiente es un ejemplo de un programa para ejecutar en la máquina
+  abstracta que se ha implementado:
+
+  #+BEGIN_SRC c
+/* Incluye definiciones y macros necesarias para lo siguiente */
+#include <minivm/language.h>
+
+/* El programa está representado en un arreglo de Instruction llamado code */
+Instruction code[3] = {
+    /* Cada Instruction se compone de una instrucción y  0 o más parámetros */
+    Instruction(MOV, Operand(IMM, 3), Operand(REG, R0)),
+    /* Los parámetros pueden ser registros o valores inmediatos */
+    Instruction(PRINT, Operand(REG, R0)),
+    /* HLT finaliza la ejecución */
+    Instruction(HLT)
+};
+  #+END_SRC
+
+* Problemas y soluciones
+** Representación y carga de los programas
+
+  Uno de los principales problemas al implementar la máquina virtual es
+  la representación de los programas mismos. Se debe buscar una
+  representación que sea sencilla de interpretar, fácil de cargar al momento
+  de la ejecución, y amigable al usuario.
+
+  Ya que los programas de la máquina propuestos como ejemplo se pueden
+  representar como código C válido mediante el uso de algunas macros,
+  podemos compilar las instrucciones a una librería dinámica; esto facilita
+  la carga de programas en la máquina virtual considerablemente al poder
+  usarse dlopen y dlsym y obtenerse un arreglo de instrucciones con el que
+  resulta sencillo trabajar:
+
+  #+BEGIN_SRC bash
+$ gcc -o programa.minivm -I include/ -shared programa.minivm.c
+  #+END_SRC
+
+** Reducción de saltos condicionales durante la interpretación de las instrucciones
+
+   Dado que usar demasiados saltos condicionales puede resultar costoso en
+   rendimiento, se buscó usar la menor cantidad posible.
+
+   Esto se pudo realizar mediante el armado de una tabla de instrucciones,
+   en donde la dirección de la implementación de una instrucción depende
+   sólamente del número de instrucción y del tipo de parámetros que contiene.
+   De esta forma, se reduce la cantidad de saltos a uno por instrucción,
+   independientemente de cuál sea o que parámetros posea.
+   Adicionalmente, esto permite implementar las instrucciones de forma más
+   sencilla, al no tener que usarse condicionales dentro de estas.
+
+** Definición semántica de las instrucciones
+
+   Ya que el requerimiento del juego de instrucciones básico fue redactado
+   en lenguaje natural, han surgido ambiguedades en el significado de las
+   instrucciones; especialmente en el significado de valores inmediatos
+   como origen en una instrucción: ¿Se refieren a una dirección de memoria
+   o simplemente un valor inmediato?
+
+   Luego de hablar con el docente, se han resuelto las dudas existentes
+   respecto a este problema y se ha proseguido a implementar las operaciones
+   de la manera acordada.
+
+* Posibles extensiones
+
+  Como posibles extensiones al trabajo práctico, se podría
+  + implementar aún más instrucciones de manejo de bits: ROR, ROL, SHR, SHL
+  + implementar instrucciones de coma flotante IEEE754
+  + implementar instrucciones de manejo de cadenas y caracteres
+  + implementar un traductor sencillo de instrucciones de la máquina
+    a assembly x86
