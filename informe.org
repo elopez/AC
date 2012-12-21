@@ -2,9 +2,10 @@
 #+OPTIONS: toc:nil
 #+TITLE: Trabajo final de Arquitectura del Computador
 #+AUTHOR: Emilio López \\Legajo L-2712/1
-#+DATE: 22 de Diciembre de 2012
+#+DATE: 20 de Diciembre de 2012
 
 * Introducción
+
   En este trabajo se implementó una máquina abstracta, capaz de ejecutar
   instrucciones sencillas. La implementación fue realizada en C, y permite
   cargar arreglos de instrucciones desde una biblioteca compartida e
@@ -18,30 +19,31 @@
   contador de instrucciones y el último es el puntero de la pila.
 
 ** Instrucciones
-   La memoria puede ser accedida mediante las instrucciones POP, PUSH, LW,
-   SW y MOV. MOV a su vez permite copiar valores entre registros sin pasar
-   por memoria.
+   * La memoria puede ser accedida mediante las instrucciones POP, PUSH, LW,
+     SW y MOV. MOV a su vez permite copiar valores entre registros sin pasar
+     por memoria.
 
-   Las instrucciones de alto nivel READ y PRINT permiten a los programas
-   leer e imprimir enteros, siendo esta la única forma posible de
-   interacción con el usuario.
+   * Las instrucciones de alto nivel READ y PRINT permiten a los programas
+     leer e imprimir enteros, siendo esta la única forma posible de
+     interacción con el usuario.
 
-   Las instrucciones ADD, SUB, MUL y DIV permiten realizar sumas, restas,
-   multiplicaciones y divisiones entre valores de registros, o un valor
-   de registro y un valor inmediato.
+   * Las instrucciones ADD, SUB, MUL y DIV permiten realizar sumas, restas,
+     multiplicaciones y divisiones entre valores de registros, o un valor
+     de registro y un valor inmediato.
 
-   La instrucción CMP permite a los programas comparar valores inmediatos
-   o en registros, acción que luego permite alterar el flujo del programa
-   a través de las instrucciones de salto JMPL y JMPE.
+   * La instrucción CMP permite a los programas comparar valores inmediatos
+     o en registros, acción que luego permite alterar el flujo del programa
+     a través de las instrucciones de salto JMPL y JMPE.
 
-   Las instrucciones AND, OR, XOR y NOT permiten realizar las operaciones de
-   bits de igual nombre.
+   * Las instrucciones AND, OR, XOR y NOT permiten realizar las operaciones de
+     bits de igual nombre entre dos registros, o un valor inmediato y un
+     valor de registro.
 
-   CALL y RET permiten implementar funciones en la máquina, guardando el valor
-   de retorno antes de saltar y posteriormente permitiendo volver al lugar
-   almacenado.
+   * CALL y RET permiten implementar funciones en la máquina, guardando el
+     valor de retorno en la pila antes de saltar y posteriormente
+     permitiendo volver al lugar almacenado.
 
-   La instrucción HLT detiene la ejecución, y cierra la máquina virtual.
+   * La instrucción HLT detiene la ejecución, y finaliza la máquina virtual.
 
 * Programas
 
@@ -71,12 +73,12 @@ Instruction code[3] = {
   representación que sea sencilla de interpretar, fácil de cargar al momento
   de la ejecución, y amigable al usuario.
 
-  Ya que los programas de la máquina propuestos como ejemplo se pueden
-  representar como código C válido mediante el uso de algunas macros,
+  Ya que los programas de la máquina propuestos como ejemplo pueden
+  representarse como código C válido mediante el uso de algunas macros,
   podemos compilar las instrucciones a una librería dinámica; esto facilita
   la carga de programas en la máquina virtual considerablemente al poder
-  usarse dlopen y dlsym y obtenerse un arreglo de instrucciones con el que
-  resulta sencillo trabajar:
+  usarse dlopen y dlsym y obtenerse un puntero a un arreglo de instrucciones
+  con el que resulta sencillo trabajar:
 
   #+BEGIN_SRC bash
 $ gcc -o programa.minivm -I include/ -shared programa.minivm.c
@@ -107,11 +109,21 @@ $ gcc -o programa.minivm -I include/ -shared programa.minivm.c
    respecto a este problema y se ha proseguido a implementar las operaciones
    de la manera acordada.
 
+** Definición de FLAGS
+
+   Dado que el significado de los bits en FLAGS no fue indicado, se decidió
+   utilizar dos bits y asignarles el significado "menor que" e "igual",
+   y de esta forma simplificar la implementación de JMPL y JMPE más adelante.
+
 * Posibles extensiones
 
   Como posibles extensiones al trabajo práctico, se podría
   + implementar aún más instrucciones de manejo de bits: ROR, ROL, SHR, SHL
   + implementar instrucciones de coma flotante IEEE754
   + implementar instrucciones de manejo de cadenas y caracteres
+  + ampliar el uso de FLAGS a las instrucciones aritméticas para notificar
+    desbordamientos (overflows), acarreos y otros estados.
+  + flexibilizar la máquina para permitir usar cantidades arbitrarias de
+    memoria
   + implementar un traductor sencillo de instrucciones de la máquina
     a assembly x86
