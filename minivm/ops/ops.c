@@ -1,7 +1,6 @@
-#include <stdio.h>
 #include "ops.h"
 
-#define NULLS NULL, NULL, NULL, NULL
+#include <minivm/language.h>
 
 /* Must match the enum on <minivm/language.h> ! */
 op ops[] = {

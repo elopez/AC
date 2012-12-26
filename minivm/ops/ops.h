@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+
 #include <minivm/language.h>
 
 #ifndef __OPS_H__
@@ -35,7 +39,7 @@ extern op ops[];
 #define INVALID_INSTRUCTION() do { \
     fprintf(stderr, "An invalid instruction was detected. The machine will now abort.\n"); \
     abort(); \
-} while (0);
+} while (0)
 
 /* Supported opperations */
 DECLARE_OP_0(NOP);

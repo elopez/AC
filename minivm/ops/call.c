@@ -1,6 +1,6 @@
 #include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
+
+#include <minivm/language.h>
 
 #include "ops.h"
 #include "../regs.h"

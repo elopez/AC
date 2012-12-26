@@ -1,5 +1,7 @@
 #include <stdint.h>
 
+#include <minivm/language.h>
+
 #include "ops.h"
 #include "../regs.h"
 #include "../mem.h"
