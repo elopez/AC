@@ -11,6 +11,7 @@ int32_t regs[FLAGS + 1];
 /* User-friendly macro to access registers */
 #define REG(i)          regs[(i)]
 
+/* User-friendly macros to manage flags */
 #define FLAGS_ISSET(i)  !!(regs[FLAGS] & (i))
 #define FLAGS_SET(i)    regs[FLAGS] |= (i)
 #define FLAGS_CLEAR()   regs[FLAGS] = 0

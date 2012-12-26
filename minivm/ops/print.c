@@ -17,5 +17,7 @@ void inline vm_PRINT_IMM(int32_t param1, int32_t param2)
 {
     /* IMM: print value at memory address */
 
+    MEMORY_CHECK(param1);
+
     printf("%d\n", MEM32(param1));
 }

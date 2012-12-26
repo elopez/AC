@@ -19,6 +19,7 @@ char mem[MEM_SIZE];
 /* User-friendly macro to access 32 bits */
 #define MEM32(i)    *(int32_t*)(mem + (i))
 
+/* Memory out of bounds check. Can alert you of out of bounds memory accesses. */
 #ifdef WITH_MEMORY_CHECK
 # define MEMORY_CHECK(address) do { \
     if ((address) >= MEM_SIZE) { \
@@ -29,6 +30,5 @@ char mem[MEM_SIZE];
 #else
 # define MEMORY_CHECK(address)
 #endif
-
 
 #endif

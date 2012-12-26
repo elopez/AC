@@ -4,7 +4,6 @@
 
 #include "ops.h"
 #include "../regs.h"
-#include "../mem.h"
 
 void inline vm_MUL_IMM_IMM(int32_t param1, int32_t param2)
 {
@@ -25,7 +24,7 @@ void inline vm_MUL_REG_IMM(int32_t param1, int32_t param2)
 
 void inline vm_MUL_REG_REG(int32_t param1, int32_t param2)
 {
-    /* REG -> REG: REG2 += REG1 */
+    /* REG -> REG: REG2 *= REG1 */
 
     REG(param2) *= REG(param1);
 }

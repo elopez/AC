@@ -4,7 +4,6 @@
 
 #include "ops.h"
 #include "../regs.h"
-#include "../mem.h"
 
 void inline vm_SUB_IMM_IMM(int32_t param1, int32_t param2)
 {
