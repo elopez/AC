@@ -3,7 +3,7 @@ INCLUDES=-I../include/
 OUT=../out
 
 CFLAGS=$(INCLUDES)
-LDFLAGS=-shared
+LDFLAGS=-shared -nostdlib
 
 .PHONY: all outdir clean build runtests
 all: outdir build
