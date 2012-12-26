@@ -1,5 +1,6 @@
 #include <minivm/language.h>
 
+/* Sums an array from memory */
 Instruction code[29] = {
     /* Our array */
     Instruction(SW, Operand(IMM, 0), Operand(IMM, 0x20)),

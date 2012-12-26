@@ -1,5 +1,7 @@
 #include <minivm/language.h>
 
+/* 3 will print a 3 and exit. Under 3 will ask for another number.
+ * 4+ will exit immediately. */
 Instruction code[7] = {
     Instruction(READ, Operand(REG, R0)),
     Instruction(CMP, Operand(REG, R0), Operand(IMM, 3)),

@@ -1,5 +1,6 @@
 #include <minivm/language.h>
 
+/* Prints the absolute value of a number */
 Instruction code[7] = {
     Instruction(READ, Operand(REG, R0)),
     Instruction(CMP, Operand(IMM, 0), Operand(REG, R0)),

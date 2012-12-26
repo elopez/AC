@@ -1,5 +1,6 @@
 #include <minivm/language.h>
 
+/* Counts the number of set bits on a number */
 Instruction code[14] = {
     Instruction(READ, Operand(REG, R0)),
     Instruction(MOV, Operand(IMM, 0), Operand(REG, R3)),

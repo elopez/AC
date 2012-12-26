@@ -5,7 +5,7 @@ OUT=../out
 CFLAGS=$(INCLUDES)
 LDFLAGS=-shared
 
-.PHONY: all outdir clean build
+.PHONY: all outdir clean build runtests
 all: outdir build
 build: $(OUT)/test0.minivm $(OUT)/test1.minivm $(OUT)/test2.minivm \
        $(OUT)/test3.minivm $(OUT)/test4.minivm $(OUT)/test5.minivm \
@@ -21,3 +21,6 @@ clean:
 
 $(OUT)/%.minivm: %.minivm.c
 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $^
+
+runtests: all
+	@./runtests.py

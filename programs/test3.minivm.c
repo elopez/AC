@@ -1,5 +1,6 @@
 #include <minivm/language.h>
 
+/* Prints 0 1 2 3 using the stack. */
 Instruction code[15] = {
     Instruction(PUSH, Operand(IMM, 3)),
     Instruction(MOV, Operand(IMM, 2), Operand(REG, R0)),

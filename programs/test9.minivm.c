@@ -1,5 +1,7 @@
 #include <minivm/language.h>
 
+/* N, N | 0xFF, (N | 0xFF) & 0xf0f0f0, ((N | 0xFF) & 0xf0f0f0) ^ N,
+ * ~(((N | 0xFF) & 0xf0f0f0) ^ N) */
 Instruction code[12] = {
     Instruction(READ, Operand(REG, R0)),
     Instruction(MOV, Operand(REG, R0), Operand(REG, R1)),
