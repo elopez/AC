@@ -21,6 +21,7 @@ clean:
 
 $(OUT)/%.minivm: %.minivm.c
 	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $^
+	chmod -x $@
 
 runtests: all
 	@./runtests.py
