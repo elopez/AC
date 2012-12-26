@@ -4,7 +4,7 @@
 
 #include "ops.h"
 
-void inline vm_NOP(int32_t param1, int32_t param2)
+inline void vm_NOP(int32_t unused param1, int32_t unused param2)
 {
     /* NO-OP */
 }

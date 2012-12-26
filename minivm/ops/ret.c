@@ -6,7 +6,7 @@
 #include "../regs.h"
 #include "../mem.h"
 
-void inline vm_RET(int32_t param1, int32_t param2)
+inline void vm_RET(int32_t unused param1, int32_t unused param2)
 {
     /* pop PC */
 

@@ -5,7 +5,7 @@
 #include "ops.h"
 #include "../regs.h"
 
-void inline vm_CMP_IMM_IMM(int32_t param1, int32_t param2)
+inline void vm_CMP_IMM_IMM(int32_t param1, int32_t param2)
 {
     /* IMM -> IMM: compare two IMMs */
 
@@ -17,7 +17,7 @@ void inline vm_CMP_IMM_IMM(int32_t param1, int32_t param2)
         FLAGS_SET(EQUAL);
 }
 
-void inline vm_CMP_IMM_REG(int32_t param1, int32_t param2)
+inline void vm_CMP_IMM_REG(int32_t param1, int32_t param2)
 {
     /* IMM -> REG: compare IMM and REG */
 
@@ -29,7 +29,7 @@ void inline vm_CMP_IMM_REG(int32_t param1, int32_t param2)
         FLAGS_SET(EQUAL);
 }
 
-void inline vm_CMP_REG_IMM(int32_t param1, int32_t param2)
+inline void vm_CMP_REG_IMM(int32_t param1, int32_t param2)
 {
     /* REG -> IMM: compare REG and IMM */
 
@@ -41,7 +41,7 @@ void inline vm_CMP_REG_IMM(int32_t param1, int32_t param2)
         FLAGS_SET(EQUAL);
 }
 
-void inline vm_CMP_REG_REG(int32_t param1, int32_t param2)
+inline void vm_CMP_REG_REG(int32_t param1, int32_t param2)
 {
     /* REG -> REG: compare two regs */
 

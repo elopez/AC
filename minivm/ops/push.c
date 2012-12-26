@@ -6,7 +6,7 @@
 #include "../regs.h"
 #include "../mem.h"
 
-void inline vm_PUSH_REG(int32_t param1, int32_t param2)
+inline void vm_PUSH_REG(int32_t param1, int32_t unused param2)
 {
     /* REG: push REG value to stack */
 
@@ -14,7 +14,7 @@ void inline vm_PUSH_REG(int32_t param1, int32_t param2)
     MEM32(REG(SP)) = REG(param1);
 }
 
-void inline vm_PUSH_IMM(int32_t param1, int32_t param2)
+inline void vm_PUSH_IMM(int32_t param1, int32_t unused param2)
 {
     /* IMM: push IMM to stack */
 

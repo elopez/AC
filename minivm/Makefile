@@ -8,7 +8,7 @@ CFLAGS=$(INCLUDES)
 ifeq ($(DEBUG),)
 CFLAGS+=-O2
 else
-CFLAGS+=-O0 -g -DWITH_MEMORY_CHECK
+CFLAGS+=-O0 -g -Wall -Wextra -DWITH_MEMORY_CHECK
 endif
 
 .PHONY: all outdir clean build
