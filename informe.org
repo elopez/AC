@@ -2,7 +2,7 @@
 #+OPTIONS: toc:nil
 #+TITLE: Trabajo final de Arquitectura del Computador
 #+AUTHOR: Emilio López \\Legajo L-2712/1
-#+DATE: 20 de Diciembre de 2012
+#+DATE: 27 de Diciembre de 2012
 
 * Introducción
 
@@ -38,6 +38,13 @@
    * Las instrucciones AND, OR, XOR y NOT permiten realizar las operaciones de
      bits de igual nombre entre dos registros, o un valor inmediato y un
      valor de registro.
+
+   * Las instrucciones SHL y SHR permiten realizar corrimientos hacia la
+     izquierda y derecha, respectivamente. No poseen ninguna consideración
+     de signo, y operan sobre registros únicamente.
+
+   * Las instrucciones ROL y ROR permiten rotar un valor de registro hacia
+     la izquierda y la derecha, respectivamente.
 
    * CALL y RET permiten implementar funciones en la máquina, guardando el
      valor de retorno en la pila antes de saltar y posteriormente
@@ -118,7 +125,6 @@ $ gcc -o programa.minivm -I include/ -shared programa.minivm.c
 * Posibles extensiones
 
   Como posibles extensiones al trabajo práctico, se podría
-  + implementar aún más instrucciones de manejo de bits: ROR, ROL, SHR, SHL
   + implementar instrucciones de coma flotante IEEE754
   + implementar instrucciones de manejo de cadenas y caracteres
   + ampliar el uso de FLAGS a las instrucciones aritméticas para notificar
