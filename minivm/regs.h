@@ -10,6 +10,7 @@ int32_t regs[FLAGS + 1];
 
 /* User-friendly macro to access registers */
 #define REG(i)          regs[(i)]
+#define UREG(i)         ((uint32_t) regs[(i)])
 
 /* User-friendly macros to manage flags */
 #define FLAGS_ISSET(i)  !!(regs[FLAGS] & (i))

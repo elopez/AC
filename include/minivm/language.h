@@ -30,6 +30,10 @@ enum {
     NOT,
     CALL,
     RET,
+    SHR,
+    SHL,
+    ROR,
+    ROL,
 };
 
 /* Parameter types */

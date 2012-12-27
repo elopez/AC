@@ -27,4 +27,8 @@ op ops[] = {
     OP_1(NOT),
     OP_1(CALL),
     OP_0(RET),
+    OP_2(SHR),
+    OP_2(SHL),
+    OP_2(ROR),
+    OP_2(ROL),
 };
